@@ -27,7 +27,6 @@ import com.cg.book.app.service.CategoryService;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "*")
 public class AdminController {
 
 	@Autowired

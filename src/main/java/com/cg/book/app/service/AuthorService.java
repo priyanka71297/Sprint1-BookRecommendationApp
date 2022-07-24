@@ -6,7 +6,7 @@ import com.cg.book.app.model.Author;
 
 public interface AuthorService {
 
-	Author getAuthorById(int authorid);
+	Author getAuthorById(int id);
 
 	List<Author> getAllAuthors();
 

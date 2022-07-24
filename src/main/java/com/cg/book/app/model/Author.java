@@ -25,7 +25,6 @@ public class Author {
 	private String authorName;
 
 	@OneToMany(mappedBy = "author")
-	// @JsonBackReference
 	@JsonIgnoreProperties("author")
 	private List<Book> books;
 
