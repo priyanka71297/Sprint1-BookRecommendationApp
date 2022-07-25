@@ -32,18 +32,18 @@ public class Author {
 
 	}
 
-	public Author(int authorid, String authorName, List<Book> books) {
+	public Author(int authorId, String authorName, List<Book> books) {
 		super();
-		this.authorId = authorid;
+		this.authorId = authorId;
 		this.authorName = authorName;
 		this.books = books;
 	}
 
-	public int getAuthorid() {
+	public int getAuthorId() {
 		return authorId;
 	}
 
-	public void setAuthorid(int authorid) {
+	public void setAuthorId(int authorid) {
 		this.authorId = authorid;
 	}
 
@@ -65,7 +65,7 @@ public class Author {
 
 	@Override
 	public String toString() {
-		return "Author [authorid=" + authorId + ", authorName=" + authorName + ", books=" + books + "]";
+		return "Author [authorId=" + authorId + ", authorName=" + authorName + ", books=" + books + "]";
 	}
 
 }
