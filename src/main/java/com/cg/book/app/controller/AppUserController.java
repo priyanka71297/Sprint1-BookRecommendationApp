@@ -23,34 +23,54 @@ import com.cg.book.app.service.AppUserService;
 //@CrossOrigin(origins = "http://localhost:3000")
 public class AppUserController {
 
-		private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-		@Autowired
-		AppUserService appUserService;
+	@Autowired
+	AppUserService appUserService;
 
-		@GetMapping("/get-all-users")
-		public ResponseEntity<List<AppUser>> getAllAppUsers() {
-			LOG.info("get-all-appUsers");
-			return new ResponseEntity<List<AppUser>>(appUserService.getAllUsers(), HttpStatus.OK);
-		}
+/*****************************************************************************************************
+	 * Get Method: get-all-users 
+	 * Description: It is used to view all users from app_users table
+******************************************************************************************************/
 
-		@PostMapping("/sign-up")
-		public ResponseEntity<AppUser> signUp(@RequestBody AppUser appUser) {
-			LOG.info(appUser.toString());
-			return new ResponseEntity<AppUser>(appUserService.signUpUser(appUser), HttpStatus.CREATED);
-		}
-
-		@PostMapping("/sign-in")
-		public ResponseEntity<AppUser> signIn(@RequestBody AppUser appUser) {
-			LOG.info(appUser.toString());
-			HttpHeaders headers = new HttpHeaders();
-			headers.add("message", "User " + appUser.getUserName() + " signed in successfully.");
-			return new ResponseEntity<AppUser>(appUserService.signInUser(appUser), headers, HttpStatus.OK);
-		}
-
-		@PutMapping("/update-user")
-		public ResponseEntity<AppUser> updateAppUser(@RequestBody AppUser appUser) {
-			LOG.info(appUser.toString());
-			return new ResponseEntity<AppUser>(appUserService.updateUser(appUser), HttpStatus.OK);
-		}
+	@GetMapping("/get-all-users")
+	public ResponseEntity<List<AppUser>> getAllAppUsers() {
+		LOG.info("get-all-appUsers");
+		return new ResponseEntity<List<AppUser>>(appUserService.getAllUsers(), HttpStatus.OK);
 	}
+	
+/*****************************************************************************************************
+	 * Post Method: sign-up
+	 * Description: It is used to register a user or admin
+******************************************************************************************************/
+	
+	@PostMapping("/sign-up")
+	public ResponseEntity<AppUser> signUp(@RequestBody AppUser appUser) {
+		LOG.info(appUser.toString());
+		return new ResponseEntity<AppUser>(appUserService.signUpUser(appUser), HttpStatus.CREATED);
+	}
+	
+/*****************************************************************************************************
+	 * Post Method: sign-in
+	 * Description: It is used to login as a user or admin
+******************************************************************************************************/	
+
+	@PostMapping("/sign-in")
+	public ResponseEntity<AppUser> signIn(@RequestBody AppUser appUser) {
+		LOG.info(appUser.toString());
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("message", "User " + appUser.getUserName() + " signed in successfully.");
+		return new ResponseEntity<AppUser>(appUserService.signInUser(appUser), headers, HttpStatus.OK);
+	}
+
+/*****************************************************************************************************
+	 * Put Method: update-user
+	 * Description: It is used to update the information
+******************************************************************************************************/	
+
+	@PutMapping("/update-user")
+	public ResponseEntity<AppUser> updateAppUser(@RequestBody AppUser appUser) {
+		LOG.info(appUser.toString());
+		return new ResponseEntity<AppUser>(appUserService.updateUser(appUser), HttpStatus.OK);
+	}
+}

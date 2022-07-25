@@ -24,13 +24,4 @@ public class CategoryController {
 		List<Category> allCategoryList = (List<Category>) categoryService.getAllCategory();
 		return allCategoryList;
 	}
-//      @GetMapping("/get-category-by-name/{name}")
-//      public ResponseEntity<Category> getCategoryByName(@PathVariable("name") String name) {
-//          Category category = categoryService.getCategoryByName(name);
-//          if (category == null) {
-//              return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-//          }
-//          return ResponseEntity.of(Optional.of(category));
-//      }
-
 }

@@ -55,7 +55,7 @@ public class AuthorServiceImpl implements AuthorService {
 			throw new AuthorAlreadyExistsException(exceptionMessage);
 		} else {
 			LOG.info("List returned successfully.");
-			return auth;
+			return authorRepository.save(author);
 		}
 
 	}
