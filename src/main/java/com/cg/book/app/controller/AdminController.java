@@ -99,7 +99,7 @@ public class AdminController {
 
 		if (book.getAuthor() != null) {
 			Author a = new Author();
-			a.setAuthorid(book.getAuthor().getAuthorid());
+			a.setAuthorId(book.getAuthor().getAuthorId());
 			a.setAuthorName(book.getAuthor().getAuthorName());
 			b.setAuthor(book.getAuthor());
 		}
