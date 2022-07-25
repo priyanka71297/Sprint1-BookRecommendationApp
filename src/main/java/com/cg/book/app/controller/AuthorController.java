@@ -18,7 +18,7 @@ import com.cg.book.app.service.AuthorService;
 
 public class AuthorController {
 
-	@Autowired(required = false)
+	@Autowired
 	AuthorService authorService;
 
 /************************************************************************************

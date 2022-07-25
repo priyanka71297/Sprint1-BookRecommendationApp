@@ -36,7 +36,7 @@ public class AdminController {
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@GetMapping("/get-all-books")
 	public List<Book> getBooks() {
 		List<Book> allBookList = (List<Book>) bookService.getAllBooks();
@@ -51,7 +51,7 @@ public class AdminController {
 		}
 		return ResponseEntity.of(Optional.of(book));
 	}
-	
+
 	@GetMapping("/get-book-by-name/{name}")
 	public ResponseEntity<Book> getBookByName(@PathVariable("name") String name) {
 		Book book = bookService.getBookByName(name);
@@ -67,7 +67,7 @@ public class AdminController {
 
 		Book b = bookService.addBook(book);
 		if (b != null) {
-			return new ResponseEntity<Book>(b,  HttpStatus.CREATED);
+			return new ResponseEntity<Book>(b, HttpStatus.CREATED);
 
 		}
 		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
@@ -120,18 +120,29 @@ public class AdminController {
 		return res;
 	}
 
+	// @SuppressWarnings("null")
+	@DeleteMapping("/deleteAuthorById/{id}")
+	public Map<String, Boolean> deleteAuthorById(@PathVariable("id") int id) {
+
+		authorService.deleteAuthor(id);
+
+		Map<String, Boolean> res = new HashMap<String, Boolean>();
+		res.put("Deleted", true);
+		return res;
+	}
+
 //	@SuppressWarnings("null")
 	@PostMapping(value = "/addAuthor")
 	public ResponseEntity<Author> addAuthor(@RequestBody Author author) {
 
 		Author a = authorService.addAuthor(author);
 		if (a != null) {
-			return new ResponseEntity<Author>(a,  HttpStatus.CREATED);
+			return new ResponseEntity<Author>(a, HttpStatus.CREATED);
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 		}
 	}
-	
+
 	@GetMapping("/get-author-by-id/{id}")
 	public ResponseEntity<Author> getAuthorById(@PathVariable(name = "id") int id) {
 
@@ -141,7 +152,7 @@ public class AdminController {
 		}
 		return ResponseEntity.of(Optional.of(author));
 	}
-	
+
 	@GetMapping("/get-author-by-name/{name}")
 	public ResponseEntity<Author> getAuthorByName(@PathVariable(name = "name") String name) {
 
@@ -151,7 +162,7 @@ public class AdminController {
 		}
 		return ResponseEntity.of(Optional.of(author));
 	}
-	
+
 	@GetMapping("/get-all-authors")
 	public List<Author> getAuthors() {
 		List<Author> allAuthorList = (List<Author>) authorService.getAllAuthors();
@@ -168,7 +179,7 @@ public class AdminController {
 		}
 		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 	}
-	
+
 	@GetMapping("/getAllCategory")
 	public List<Category> getAllCategory() {
 		List<Category> allCategoryList = (List<Category>) categoryService.getAllCategory();
