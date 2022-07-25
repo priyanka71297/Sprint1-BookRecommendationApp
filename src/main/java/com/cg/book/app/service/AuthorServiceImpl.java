@@ -30,4 +30,12 @@ public class AuthorServiceImpl implements AuthorService{
 		Author addedAuthor= authorRepository.save(author);		
 		return addedAuthor;
 	}
+	
+	@Override
+    public Author getAuthorByName(String name) {
+        Author a= authorRepository.findAuthorByAuthorName(name);
+        return a;
+    }
+	
+	
 }

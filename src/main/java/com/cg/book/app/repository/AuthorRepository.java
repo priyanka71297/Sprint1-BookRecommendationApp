@@ -7,5 +7,7 @@ import com.cg.book.app.model.Author;
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
 	public Author findAuthorByAuthorId(int id);
+	
+	public Author findAuthorByAuthorName(String name);
 
 }

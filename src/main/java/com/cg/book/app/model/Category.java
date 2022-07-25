@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Category {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
 	private int categoryId;
 
@@ -31,6 +31,13 @@ public class Category {
 	public Category() {
 
 	}
+	
+	public Category(int categoryId, String category, List<Book> books) {
+        super();
+        this.categoryId = categoryId;
+        this.category = category;
+        this.books = books;
+    }
 
 	public int getCategoryId() {
 		return categoryId;

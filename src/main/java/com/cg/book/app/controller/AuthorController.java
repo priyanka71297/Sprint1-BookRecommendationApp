@@ -14,11 +14,17 @@ import com.cg.book.app.service.AuthorService;
 
 @RestController
 @RequestMapping("/user")
+// @CrossOrigin(origins = "*")
+
 public class AuthorController {
 
 	@Autowired(required = false)
 	AuthorService authorService;
 
+/************************************************************************************
+	 * Method: getAuthorById 
+	 * Description: It is used to view Authors by Id from author table /
+*************************************************************************************/
 	@GetMapping("/get-author-by-id/{id}")
 	public ResponseEntity<Author> getAuthorById(@PathVariable(name = "id") int id) {
 
@@ -29,6 +35,25 @@ public class AuthorController {
 		return ResponseEntity.of(Optional.of(author));
 	}
 
+/***************************************************************************************
+	 * Method: getAuthorByName 
+	 * Description: It is used to view Authors by name from author table 
+****************************************************************************************/
+
+	@GetMapping("/get-author-by-name/{name}")
+	public ResponseEntity<Author> getAuthorByName(@PathVariable(name = "name") String name) {
+
+		Author author = authorService.getAuthorByName(name);
+		if (author == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		return ResponseEntity.of(Optional.of(author));
+	}
+
+/********************************************************
+	 * Method: getAllAuthors 
+	 * Description: It is used to view all Authors in author table
+********************************************************/
 	@GetMapping("/get-all-authors")
 	public List<Author> getAuthors() {
 		List<Author> allAuthorList = (List<Author>) authorService.getAllAuthors();

@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -132,6 +131,32 @@ public class AdminController {
 			return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
 		}
 	}
+	
+	@GetMapping("/get-author-by-id/{id}")
+	public ResponseEntity<Author> getAuthorById(@PathVariable(name = "id") int id) {
+
+		Author author = authorService.getAuthorById(id);
+		if (author == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		return ResponseEntity.of(Optional.of(author));
+	}
+	
+	@GetMapping("/get-author-by-name/{name}")
+	public ResponseEntity<Author> getAuthorByName(@PathVariable(name = "name") String name) {
+
+		Author author = authorService.getAuthorByName(name);
+		if (author == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		return ResponseEntity.of(Optional.of(author));
+	}
+	
+	@GetMapping("/get-all-authors")
+	public List<Author> getAuthors() {
+		List<Author> allAuthorList = (List<Author>) authorService.getAllAuthors();
+		return allAuthorList;
+	}
 
 	// @SuppressWarnings("null")
 	@PostMapping(value = "/addCategory")
@@ -142,6 +167,12 @@ public class AdminController {
 			return new ResponseEntity<Category>(c, HttpStatus.CREATED);
 		}
 		return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+	}
+	
+	@GetMapping("/getAllCategory")
+	public List<Category> getAllCategory() {
+		List<Category> allCategoryList = (List<Category>) categoryService.getAllCategory();
+		return allCategoryList;
 	}
 
 }

@@ -32,7 +32,7 @@ public class Author {
 
 	}
 
-	public Author(int authorid, String authorName, String category, List<Book> books) {
+	public Author(int authorid, String authorName, List<Book> books) {
 		super();
 		this.authorId = authorid;
 		this.authorName = authorName;
