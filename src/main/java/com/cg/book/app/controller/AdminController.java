@@ -126,9 +126,9 @@ public class AdminController {
 
 		authorService.deleteAuthor(id);
 
-		Map<String, Boolean> res = new HashMap<String, Boolean>();
-		res.put("Deleted", true);
-		return res;
+		Map<String, Boolean> result = new HashMap<String, Boolean>();
+		result.put("Deleted", true);
+		return result;
 	}
 
 //	@SuppressWarnings("null")
