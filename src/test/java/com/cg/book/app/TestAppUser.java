@@ -2,6 +2,10 @@ package com.cg.book.app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -15,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.cg.book.app.exception.AppUserNotFoundException;
 import com.cg.book.app.model.AppUser;
 import com.cg.book.app.repository.AppUserRepository;
+import com.cg.book.app.service.AppUserService;
 import com.cg.book.app.service.AppUserServiceImpl;
 
 @RunWith(SpringRunner.class)
@@ -25,7 +30,7 @@ public class TestAppUser {
 	@Mock
 	private AppUserRepository appUserRepository;
 
-	// 1. signUpUser() Service Layer Check
+	// 1. signUpUser() 
 	@Test
 	public void signUpUserTest() {
 		AppUser user = new AppUser();
@@ -69,7 +74,7 @@ public class TestAppUser {
 //		Assertions.assertEquals(testReturn, serviceobj.signInUser(user));
 //	}
 //	
-// 4. signIn() Service Layer Check for Correct Credentials
+//// 4. signIn() Service Layer Check for Correct Credentials
 //	@Test
 //	public void testPositivesignIn() throws AppUserNotFoundException {
 //		AppUser user=new AppUser();
@@ -82,6 +87,19 @@ public class TestAppUser {
 //		Mockito.when(appUserRepository.findById("Priya")).thenReturn(Optional.of(user));
 //
 //		
-//		Assertions.assertEquals(testReturn, serviceobj.signInUser("Priya", "Priya"));
+//		Assertions.assertEquals(testReturn, serviceobj.signInUser(user));
 //	}
+//	5. Test case to get all users
+//	@Test
+//    public void showAllUsersTest() {
+//
+//       //if the findAll() method is true, case returns the below two values.
+//       Mockito.when(appUserRepository.findAll())
+//       .thenReturn(Stream.of(new AppUser(),
+//               new AppUser()).
+//               collect(Collectors.toList()));
+//
+//       //expected number of data =2
+//       assertEquals(2,AppUserService.getAllUsers().size());
+//   }
 }

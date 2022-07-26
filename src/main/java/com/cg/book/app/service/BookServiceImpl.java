@@ -3,15 +3,23 @@ package com.cg.book.app.service;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.book.app.exception.AuthorAlreadyExistsException;
+import com.cg.book.app.exception.BookAlreadyExistsException;
 import com.cg.book.app.exception.BookNotFoundException;
+import com.cg.book.app.model.Author;
 import com.cg.book.app.model.Book;
 import com.cg.book.app.repository.BookRepository;
 
 @Service
 public class BookServiceImpl implements BookService {
+	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -26,9 +34,19 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Book addBook(Book book) {
-		System.out.println("In Service");
-		return bookRepository.save(book);
-	}
+			Book b = bookRepository.findBookByBookName(book.getBookName());
+			if (b != null) {
+				String exceptionMessage = "Book already exist in the database.";
+				LOG.warn(exceptionMessage);
+				throw new BookAlreadyExistsException(exceptionMessage);
+			} else {
+				LOG.info("List returned successfully.");
+				return bookRepository.save(b);
+			}
+
+		}
+
+	
 
 	@Override
 	public Book getBookById(int id) {
