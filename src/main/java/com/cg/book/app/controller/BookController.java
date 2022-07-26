@@ -19,12 +19,22 @@ public class BookController {
 
 	@Autowired
 	BookService bookservice;
+	
+/************************************************************************************
+     * Method: get-all-books 
+     * Description: It is used to view all books from books table /
+*************************************************************************************/
 
 	@GetMapping("/get-all-books")
 	public List<Book> getBooks() {
 		List<Book> allBookList = (List<Book>) bookservice.getAllBooks();
 		return allBookList;
 	}
+	
+/************************************************************************************
+     * Method: get-book-by-id 
+     * Description: It is used to view all books by id from books table /
+*************************************************************************************/
 
 	@GetMapping("/get-book-by-id/{id}")
 	public ResponseEntity<Book> getBookByid(@PathVariable("id") int id) {
@@ -34,6 +44,11 @@ public class BookController {
 		}
 		return ResponseEntity.of(Optional.of(book));
 	}
+	
+/************************************************************************************
+     * Method: get-book-by-name 
+     * Description: It is used to view all books by name from books table /
+*************************************************************************************/
 	
 	@GetMapping("/get-book-by-name/{name}")
 	public ResponseEntity<Book> getBookByName(@PathVariable("name") String name) {

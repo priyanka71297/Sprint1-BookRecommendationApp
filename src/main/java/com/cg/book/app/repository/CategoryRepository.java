@@ -6,4 +6,6 @@ import com.cg.book.app.model.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
+	Category findCategoryByCategoryId(int id);
+
 }
