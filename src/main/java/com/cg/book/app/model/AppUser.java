@@ -13,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @Table(name = "app_users")
 public class AppUser {
 
+	
 	@Id
 	@Column(name = "user_name")
 	@NotBlank
@@ -103,4 +104,5 @@ public class AppUser {
 	public String toString() {
 		return "AppUser [userName=" + userName + ", password=" + password + ", role=" + role + "]";
 	}
+	
 }

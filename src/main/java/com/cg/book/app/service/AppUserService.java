@@ -12,4 +12,5 @@ public interface AppUserService {
 	AppUser signInUser(AppUser appUser);
 
 	AppUser updateUser(AppUser appUser);
+
 }
