@@ -9,10 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.book.app.exception.AuthorAlreadyExistsException;
 import com.cg.book.app.exception.BookAlreadyExistsException;
 import com.cg.book.app.exception.BookNotFoundException;
-import com.cg.book.app.model.Author;
 import com.cg.book.app.model.Book;
 import com.cg.book.app.repository.BookRepository;
 

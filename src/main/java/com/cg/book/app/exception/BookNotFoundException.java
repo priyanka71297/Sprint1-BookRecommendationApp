@@ -12,8 +12,8 @@ public class BookNotFoundException extends RuntimeException {
 		super();
 	}
 
-	public BookNotFoundException(String message) {
-		super(message);
+	public BookNotFoundException(String exceptionMessage) {
+		super(exceptionMessage);
 
 	}
 }

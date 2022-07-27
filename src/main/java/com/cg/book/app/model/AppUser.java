@@ -2,8 +2,6 @@ package com.cg.book.app.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
@@ -51,9 +49,9 @@ public class AppUser {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
-	}
+//	public String getPassword() {
+//		return password;
+//	}
 
 	public void setPassword(String password) {
 		this.password = password;
