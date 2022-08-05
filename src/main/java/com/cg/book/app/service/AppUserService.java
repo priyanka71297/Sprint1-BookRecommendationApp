@@ -13,4 +13,10 @@ public interface AppUserService {
 
 	AppUser updateUser(AppUser appUser);
 
+	String signOutUser(String userName);
+
+//	String logoutUser(String userName);
+
+
+	
 }

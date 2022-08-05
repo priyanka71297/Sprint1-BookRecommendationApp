@@ -8,6 +8,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "app_users")
@@ -17,8 +18,12 @@ public class AppUser {
 	@Id
 	@Column(name = "user_name")
 	@NotBlank
+//	@Min(value = 4)
+//	@Max(value = 32)
+//	@Size(min = 4, max = 32)
 	@Min(4)
 	@Max(32)
+//	@Pattern(regexp="[a-zA-Z]{4,32}")
 	private String userName;
 
 	@Column(name = "password")
@@ -50,9 +55,9 @@ public class AppUser {
 		this.userName = userName;
 	}
 
-//	public String getPassword() {
-//		return password;
-//	}
+	public String getPassword() {
+		return password;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;

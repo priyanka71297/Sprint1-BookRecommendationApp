@@ -74,6 +74,32 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 	@Override
+	public String signOutUser(String userName) {
+		if (signedInUser.getUserName().equals(userName)) {
+			LOG.info(userName + " signed out successfully.");
+			signedInUser = null;
+			return userName;
+		} else {
+			String exceptionMessage = "User with userName " + userName + " is not signed in.";
+			LOG.warn(exceptionMessage);
+			throw new AppUserNotFoundException(exceptionMessage);
+		}
+	}
+	
+//	@Override
+//	public String logoutUser(String userName) {
+//		if (signedInUser.getUserName().equals(userName)) {
+//			LOG.info(userName + " logged out successfully.");
+//			signedInUser = null;
+//			return userName;
+//		} else {
+//			String exceptionMessage = "User with userName " + userName + " is not signed in.";
+//			LOG.warn(exceptionMessage);
+//			throw new AppUserNotFoundException(exceptionMessage);
+//		}
+//	}
+
+	@Override
 	public AppUser updateUser(AppUser appUser) {
 		Optional<AppUser> userOptional = appUserRepository.findById(appUser.getUserName());
 		if (userOptional.isPresent()) {
